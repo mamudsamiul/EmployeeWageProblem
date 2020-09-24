@@ -10,9 +10,9 @@ public class EmployeeWageProblem {
 		final int IS_FULL_TIME=1;
 		final int IS_PART_TIME=2;
 		final int EMP_RATE_PER_HOUR=200;
-		
+		final int NUM_OF_WORKING_DAYS=20;
 		//Variable
-		int empHrs=0,empWage=0;
+		int empHrs=0,empWage=0,totalWage=0;
 		
 		//Welcome Message
 		
@@ -20,6 +20,8 @@ public class EmployeeWageProblem {
 		
 		
 		Random rand = new Random();//Instance of random class
+		
+		for(int day=0;day<NUM_OF_WORKING_DAYS;day++) {
 		int rand_number=rand.nextInt(100);//Generating random number in between 0 and 100
 		
 		
@@ -37,7 +39,12 @@ public class EmployeeWageProblem {
 				
 		}		
 		empWage=empHrs*EMP_RATE_PER_HOUR;
+		
+		totalWage+=empWage;
 		System.out.println("Daily wage is : "+empWage);
+		}
+		System.out.println("Total wage is : "+totalWage);
+		
 	}
 
 }
