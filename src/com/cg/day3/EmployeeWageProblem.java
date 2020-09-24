@@ -11,8 +11,9 @@ public class EmployeeWageProblem {
 		final int IS_PART_TIME=2;
 		final int EMP_RATE_PER_HOUR=200;
 		final int NUM_OF_WORKING_DAYS=20;
+		final int MAX_HRS_IN_MONTH=100;
 		//Variable
-		int empHrs=0,empWage=0,totalWage=0;
+		int empHrs=0,empWage=0,totalWage=0,totalWorkingDays=0,totalEmpHrs=0;
 		
 		//Welcome Message
 		
@@ -21,9 +22,8 @@ public class EmployeeWageProblem {
 		
 		Random rand = new Random();//Instance of random class
 		
-		for(int day=0;day<NUM_OF_WORKING_DAYS;day++) {
+		while(totalEmpHrs<=MAX_HRS_IN_MONTH && totalWorkingDays<NUM_OF_WORKING_DAYS) {
 		int rand_number=rand.nextInt(100);//Generating random number in between 0 and 100
-		
 		
 		int empCheck=rand_number%3;
 		switch(empCheck) {
@@ -37,13 +37,15 @@ public class EmployeeWageProblem {
 				empHrs=0;
 			
 				
-		}		
-		empWage=empHrs*EMP_RATE_PER_HOUR;
-		
-		totalWage+=empWage;
-		System.out.println("Daily wage is : "+empWage);
 		}
-		System.out.println("Total wage is : "+totalWage);
+		totalWorkingDays++;
+		totalEmpHrs+=empHrs;
+		
+	
+		System.out.println("Day : "+totalWorkingDays +" Emp Hours= "+empHrs);
+		}
+		empWage=totalEmpHrs*EMP_RATE_PER_HOUR;
+		System.out.println("Total wage is : "+empWage);
 		
 	}
 
