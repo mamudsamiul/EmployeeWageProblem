@@ -18,6 +18,42 @@ public class EmployeeWageProblem {
 		this.numberOfWorkingDays = numberOfWorkingDays;
 
 	}
+	
+	private void computeWage()
+	{
+		// Variable
+				int empHrs = 0, empWage = 0, totalWorkingDays = 0, totalEmpHrs = 0;
+
+				Random rand = new Random();// Instance of random class
+
+				while (totalEmpHrs <= maxHrsPerMonth && totalWorkingDays < numberOfWorkingDays) {
+					
+					int rand_number = rand.nextInt(100);// Generating random number in between 0 and 100
+					int empCheck = rand_number % 3;
+					
+					switch (empCheck) {
+						case IS_FULL_TIME:
+							empHrs = 8;
+							break;
+						case IS_PART_TIME:
+							empHrs = 4;
+							break;
+						default:
+							empHrs = 0;
+
+					}
+					
+					totalWorkingDays++;
+					totalEmpHrs += empHrs;
+
+					System.out.println("Day : " + totalWorkingDays + " Emp Hours= " + empHrs);
+				}
+				
+				empWage = totalEmpHrs * empRatePerHour;
+				System.out.println("Total Wage is of " + company + "'s Employee is " + empWage);
+		
+		
+	}
 
 	public static void main(String[] args) {
 
@@ -26,37 +62,9 @@ public class EmployeeWageProblem {
 
 		EmployeeWageProblem capgemini = new EmployeeWageProblem("Capgemini", 500, 20, 100);
 		EmployeeWageProblem tcs = new EmployeeWageProblem("TCS", 400, 23, 80);
-
-		// Variable
-		int empHrs = 0, empWage = 0, totalWorkingDays = 0, totalEmpHrs = 0;
-
-		Random rand = new Random();// Instance of random class
-
-		while (totalEmpHrs <= capgemini.maxHrsPerMonth && totalWorkingDays < capgemini.numberOfWorkingDays) {
-			
-			int rand_number = rand.nextInt(100);// Generating random number in between 0 and 100
-			int empCheck = rand_number % 3;
-			
-			switch (empCheck) {
-				case IS_FULL_TIME:
-					empHrs = 8;
-					break;
-				case IS_PART_TIME:
-					empHrs = 4;
-					break;
-				default:
-					empHrs = 0;
-
-			}
-			
-			totalWorkingDays++;
-			totalEmpHrs += empHrs;
-
-			System.out.println("Day : " + totalWorkingDays + " Emp Hours= " + empHrs);
-		}
+		capgemini.computeWage();
+		tcs.computeWage();
 		
-		empWage = totalEmpHrs * capgemini.empRatePerHour;
-		System.out.println("Total Wage is of " + capgemini.company + "'s Employee is " + empWage);
 
 	}
 
