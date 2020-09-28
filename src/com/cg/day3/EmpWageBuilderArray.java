@@ -70,5 +70,6 @@ public class EmpWageBuilderArray implements ComputeEmpWage {
 		empWageBuilder.addCompanyEmpWage("BigBazar", 20, 2, 10);
 		empWageBuilder.addCompanyEmpWage("Dmart", 10, 4, 20);
 		empWageBuilder.computeEmpWage();
+		System.out.println("Total Wage for BigBazar: " + empWageBuilder.getTotalWage("BigBazar"));
 	}
 }
