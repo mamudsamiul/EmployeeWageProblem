@@ -2,7 +2,7 @@ package com.cg.day3;
 
 import java.util.Random;
 
-public class EmpWageBuilderArray {
+public class EmpWageBuilderArray implements ComputeEmpWage {
 	// Constant
 	public static final int IS_FULL_TIME = 1;
 	public static final int IS_PART_TIME = 2;
@@ -13,13 +13,15 @@ public class EmpWageBuilderArray {
 		companyEmpWageArray = new EmployeeWageProblem[5];
 	}
 
-	private void addCompanyEmpWage(String company, int empRatePerHour, int numberOfWorkingDays, int maxHrsPerMonth) {
+	@Override
+	public void addCompanyEmpWage(String company, int empRatePerHour, int numberOfWorkingDays, int maxHrsPerMonth) {
 		companyEmpWageArray[numOfCompany] = new EmployeeWageProblem(company, empRatePerHour, numberOfWorkingDays,
 				maxHrsPerMonth);
 		numOfCompany++;
 	}
 
-	private void computeEmpWage() {
+	@Override
+	public void computeEmpWage() {
 		for (int i = 0; i < numOfCompany; i++) {
 			companyEmpWageArray[i].setTotalEmpWage(this.computeEmpWage(companyEmpWageArray[i]));
 			System.out.println(companyEmpWageArray[i]);
@@ -49,6 +51,11 @@ public class EmpWageBuilderArray {
 			System.out.println("Day : " + totalWorkingDays + " Emp Hours= " + empHrs);
 		}
 		return totalEmpHrs * companyEmpWage.empRatePerHour;
+	}
+
+	@Override
+	public int getTotalWage(String company) {
+		return 0;
 	}
 
 	public static void main(String[] args) {
